@@ -1,0 +1,39 @@
+Run options: include {:focus=>true}
+
+All examples were filtered out; ignoring {:focus=>true}
+
+schema_migration.sql
+  creates pokemon table
+  has an autoincrementing id column
+  has a name column
+  has a type column
+
+Pokemon
+  .initialize
+    is initialized with keyword arguments of name, type and db
+  .save
+    saves an instance of a pokemon with the correct id
+  .find
+    finds a pokemon from the database by their id number and returns a new Pokemon object
+  BONUS
+    knows that a pokemon have a default hp of 60
+    alters Pikachu's hp to 59 (FAILED - 1)
+
+Failures:
+
+  1) Pokemon BONUS alters Pikachu's hp to 59
+     Failure/Error: expect(Pokemon.find(1, @db).hp).to eq(59)
+
+       expected: 59
+            got: nil
+
+       (compared using ==)
+     # ./spec/pokemon_spec.rb:65:in `block (3 levels) in <top (required)>'
+
+Finished in 0.03017 seconds (files took 0.43612 seconds to load)
+9 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/pokemon_spec.rb:63 # Pokemon BONUS alters Pikachu's hp to 59
+
