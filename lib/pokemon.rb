@@ -1,27 +1,11 @@
 class Pokemon
-  attr_reader :id, :name, :type, :db, :hp
+  attr_accessor :id, :name, :type, :db, :hp
 
-  @@all =[]
-
-  # WHY doesn't this self.send work (for metaprogramming and mass assignment)?????
-  #def initialize(attributes)
-  #  binding.pry
-  #  attributes.each do |key, value|
-  #    self.send("#{key}=", value)
-  #  end
-  #end
-  def initialize(id:, name:, type:, db:, hp: nil)
-    @id = id
-    @name = name
-    @type = type
-    @db = db
-    @hp = hp
-
-    @@all << self
-  end
-
-  def self.all
-    @@all
+  def initialize(attributes={})
+    #binding.pry
+    attributes.each do |key, value|
+      self.send("#{key}=", value)
+    end
   end
 
   def self.save(name, type, db)
